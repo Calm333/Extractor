@@ -7,6 +7,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Frame extends JFrame {
     private JPanel onePanel;
@@ -24,15 +26,16 @@ public class Frame extends JFrame {
     private JButton maxWindow;
     private JButton iconfied;
     private JPanel top;
+    private JButton language;
 
     private int px;
     private int py;
 
     private final ReadFile readFile;
 
+    private ResourceBundle bundle;
 
     public Frame() throws HeadlessException {
-
         readFile = new ReadFile();
         setUndecorated(true);
         setVisible(true);
@@ -184,6 +187,57 @@ public class Frame extends JFrame {
             }
         });
 
+        language.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (language.isDefaultCapable()){
+                    language.setDefaultCapable(false);
+                    language.setText("En");
+
+                    bundle = ResourceBundle.getBundle("language",new Locale("ru"));
+
+                    uploadFile.setText(bundle.getString("uploadButton"));
+                    clean.setText(bundle.getString("cleanButton"));
+                    extract.setText(bundle.getString("extractButton"));
+                    saveFile.setText(bundle.getString("saveButton"));
+                    copyFile.setText(bundle.getString("copyButton"));
+
+                    select.removeAllItems();
+                    select.addItem(bundle.getString("listIn_0"));
+                    select.addItem(bundle.getString("listIn_1"));
+                    select.addItem(bundle.getString("listIn_2"));
+                    select.addItem(bundle.getString("listIn_3"));
+
+                    entryField.setText(bundle.getString("rightLabel"));
+                    result.setText(bundle.getString("leftLabel"));
+
+                    exit.setToolTipText(bundle.getString("exitToolTip"));
+
+                } else {
+                    language.setDefaultCapable(true);
+                    language.setText("Ru");
+
+                    bundle = ResourceBundle.getBundle("language",new Locale("en"));
+
+                    uploadFile.setText(bundle.getString("uploadButton"));
+                    clean.setText(bundle.getString("cleanButton"));
+                    extract.setText(bundle.getString("extractButton"));
+                    saveFile.setText(bundle.getString("saveButton"));
+                    copyFile.setText(bundle.getString("copyButton"));
+
+                    select.removeAllItems();
+                    select.addItem(bundle.getString("listIn_0"));
+                    select.addItem(bundle.getString("listIn_1"));
+                    select.addItem(bundle.getString("listIn_2"));
+                    select.addItem(bundle.getString("listIn_3"));
+
+                    entryField.setText(bundle.getString("rightLabel"));
+                    result.setText(bundle.getString("leftLabel"));
+
+                    exit.setToolTipText(bundle.getString("exitToolTip"));
+                }
+            }
+        });
     }
 
     public void windowResize() {

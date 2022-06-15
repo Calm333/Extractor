@@ -162,7 +162,7 @@
               <enabled value="true"/>
               <icon value="iconfied.png"/>
               <text value=""/>
-              <toolTipText value="Roll up"/>
+              <toolTipText value=""/>
             </properties>
           </component>
           <component id="9d835" class="javax.swing.JButton" binding="maxWindow">
@@ -173,7 +173,7 @@
               <hideActionText value="false"/>
               <icon value="m.png"/>
               <text value=""/>
-              <toolTipText value="Minimazed window"/>
+              <toolTipText value=""/>
             </properties>
           </component>
           <component id="b409e" class="javax.swing.JButton" binding="exit">
@@ -187,6 +187,14 @@
           </component>
         </children>
       </grid>
+      <component id="6874a" class="javax.swing.JButton" binding="language">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Ru"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
